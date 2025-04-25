@@ -13,12 +13,7 @@ def create_element(name: str, year: Optional[int] = None, month: Optional[int] =
         raise ValueError("date seems to be invalid, task was not created") from e
     return Task(name,date,completed)
 
-def add_element(element: Task):
-    pass
+def add_element(element: Task, tasklist: list): 
+    if element is not None:
+        tasklist.append(element)
 
-def display_element(element: Task, number: int):
-    if element.completed:
-        checked_symbol = "x"
-    else:
-        checked_symbol = "o"
-    print(f"No." + number + ": " + element.name + " " + checked_symbol + " due" + element.date)

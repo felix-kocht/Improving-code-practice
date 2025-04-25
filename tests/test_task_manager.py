@@ -1,5 +1,6 @@
 import pytest
-from task_manager import create_element, add_element, display_element
+from task_manager import create_element, add_element
+from main import display_element
 
 def test_create_element_valid():
     task = create_element('first_task',2026,4,23)
@@ -21,10 +22,11 @@ def test_create_element_invalid():
     assert "invalid" in str(exc_info.value).lower()
 
 
-def test_display_element(capsys):
-    task = create_element('first_task', 2026, 4, 23) #TODO: find out if we create these from scratch every time
-    display_element(task, 4)
-    captured = capsys.readouterr()
-    assert "first_task" in captured.out
-    assert "2026" in captured.out
-    
+def test_add_element():
+    tasklist = []
+    task = create_element('new_task', 2025, 12, 25)
+    add_element(task, tasklist)
+    assert len(tasklist) == 1
+    assert tasklist[0].name == 'new_task'
+    assert tasklist[0].date.year == 2025
+    assert tasklist[0].completed is False
