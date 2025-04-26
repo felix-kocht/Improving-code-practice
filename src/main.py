@@ -58,19 +58,7 @@ def display_tasklist(tasklist):
 
 
 def display_element(element: Task, number: int):
-    if element.completed:
-        checked_symbol = "x"
-    else:
-        checked_symbol = "o"
-    print(
-        checked_symbol
-        + " No:"
-        + str(number)
-        + ": "
-        + element.name
-        + ", due: "
-        + str(element.date)
-    )
+    print(str(number) + " - " + str(element))
 
 
 def main():
