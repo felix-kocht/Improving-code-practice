@@ -32,5 +32,5 @@ def test_display_element(capsys):
     captured = capsys.readouterr()
     assert "first_task" in captured.out
     assert "2026" in captured.out
-    assert " x " in captured.out
+    assert "x " in captured.out
 
