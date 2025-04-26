@@ -1,5 +1,5 @@
 from task import Task
-from task_manager import create_element, add_element
+from task_manager import add_element, create_element
 
 
 def interact():
@@ -9,12 +9,13 @@ def interact():
     while True:
         name, year, month, day, completed = get_user_input()
 
-        if name.lower() == 'exit':
+        if name.lower() == "exit":
             print("Exiting Task Manager. Goodbye!")
             break
 
         name, year, month, day, completed_flag = parse_user_input(
-            name, year, month, day, completed)
+            name, year, month, day, completed
+        )
         task = create_element(name, year, month, day, completed_flag)
         add_element(task, tasklist)
         display_tasklist(tasklist)
@@ -42,7 +43,7 @@ def parse_user_input(name, year, month, day, completed):
     year = int(year) if year else None
     month = int(month) if month else None
     day = int(day) if day else None
-    completed_flag = True if completed == 'y' else False
+    completed_flag = True if completed == "y" else False
 
     return name, year, month, day, completed_flag
 
@@ -61,8 +62,15 @@ def display_element(element: Task, number: int):
         checked_symbol = "x"
     else:
         checked_symbol = "o"
-    print(f"" + checked_symbol + " No:" + str(number) + ": " + element.name +
-          ", due: " + str(element.date))
+    print(
+        checked_symbol
+        + " No:"
+        + str(number)
+        + ": "
+        + element.name
+        + ", due: "
+        + str(element.date)
+    )
 
 
 def main():
