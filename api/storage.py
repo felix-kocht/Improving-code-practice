@@ -1,6 +1,12 @@
 from .models import Task
 
-tasklist = []
+
+def load_tasklist(tasks: list[Task]):
+    """
+    Loads the tasklist from a list of tasks.
+    """
+    global tasklist
+    tasklist = tasks
 
 
 def add_task(task: Task):

@@ -1,8 +1,6 @@
 import json
 import os
 
-from task_manager import add_element, create_element
-
 
 def load_file(file_path):
     """
@@ -20,14 +18,7 @@ def load_file(file_path):
 
     tasklist = []
     for task_data in content:
-        task = create_element(
-            name=task_data["name"],
-            year=task_data["due_date"]["year"],
-            month=task_data["due_date"]["month"],
-            day=task_data["due_date"]["day"],
-            completed=task_data["completed"],
-        )
-        add_element(task, tasklist)
+        tasklist.append(task_data)
 
     return tasklist
 
@@ -43,7 +34,7 @@ def save_file(file_path, tasklist):
     for task in tasklist:
         task_data = {
             "name": task.name,
-            "due_date": {
+            "date": {
                 "year": task.date.year if task.date else None,
                 "month": task.date.month if task.date else None,
                 "day": task.date.day if task.date else None,
