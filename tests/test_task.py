@@ -1,6 +1,6 @@
 from datetime import date
 
-from task import Task
+from src.task import Task
 
 
 def test_task_creation_valid():

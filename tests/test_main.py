@@ -1,5 +1,5 @@
-from main import display_element, parse_user_input
-from task_manager import create_element
+from src.main import display_element, parse_user_input
+from src.task_manager import create_element
 
 
 def test_parse_user_input_correct_fields():
