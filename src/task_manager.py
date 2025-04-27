@@ -18,7 +18,7 @@ def create_element(
             date = None
     except ValueError as e:
         raise ValueError("date seems to be invalid, task was not created") from e
-    return Task(name, date, completed)
+    return Task(name=name, date=date, completed=completed)
 
 
 def add_element(element: Task, tasklist: list):
