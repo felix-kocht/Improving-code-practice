@@ -1,10 +1,19 @@
 from fastapi import FastAPI  # type: ignore
+from fastapi.middleware.cors import CORSMiddleware
 
 from .file_io import load_file, save_file
 from .models import Task
 from .storage import add_task, get_all_tasks, load_tasklist
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In dev, allow all. Later, you can restrict this.
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.on_event("startup")
