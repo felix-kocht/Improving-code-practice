@@ -44,9 +44,9 @@ def save_file(file_path, tasklist):
         task_data = {
             "name": task.name,
             "due_date": {
-                "year": task.date.year,
-                "month": task.date.month,
-                "day": task.date.day,
+                "year": task.date.year if task.date else None,
+                "month": task.date.month if task.date else None,
+                "day": task.date.day if task.date else None,
             },
             "completed": task.completed,
         }

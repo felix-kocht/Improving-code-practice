@@ -1,9 +1,10 @@
+from file_io import load_file, save_file
 from task import Task
 from task_manager import add_element, create_element
 
 
 def interact():
-    tasklist = []
+    tasklist = load_file("data/tasklist_data.json")
     print("Welcome to the CLI Task Manager!")
 
     while True:
@@ -11,6 +12,7 @@ def interact():
 
         if name.lower() == "exit":
             print("Exiting Task Manager. Goodbye!")
+            save_file("data/tasklist_data.json", tasklist)
             break
 
         name, year, month, day, completed_flag = parse_user_input(
