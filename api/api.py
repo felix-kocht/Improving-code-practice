@@ -1,10 +1,11 @@
 from fastapi import FastAPI  # type: ignore
 from fastapi.middleware.cors import CORSMiddleware
 
-from .file_io import load_file, save_file
+from .database import init_db
 from .models import Task
-from .storage import add_task, get_all_tasks, load_tasklist
+from .storage import add_task, get_all_tasks  # , load_tasklist
 
+# from .file_io import load_file, save_file
 app = FastAPI()
 
 app.add_middleware(
@@ -21,17 +22,18 @@ def startup_event():
     """
     Actions to perform on server startup.
     """
-    tasks = load_file("data/tasklist_data.json")
-    load_tasklist(tasks)
+    # tasks = load_file("data/tasklist_data.json")
+    # load_tasklist(tasks)
+    init_db()
 
 
-@app.on_event("shutdown")
-def shutdown_event():
-    """
-    Actions to perform on server shutdown.
-    """
-    tasks = get_all_tasks()
-    save_file("data/tasklist_data.json", tasks)
+# @app.on_event("shutdown")
+# def shutdown_event():
+#     """
+#     Actions to perform on server shutdown.
+#     """
+#     tasks = get_all_tasks()
+#     save_file("data/tasklist_data.json", tasks)
 
 
 @app.post("/tasks")
